@@ -19,6 +19,7 @@ def get_transforms(train: bool = True) -> transforms.Compose:
             std=[0.2470, 0.2435, 0.2616],
         ),
     ])
+    
 def get_dataloaders(
     data_dir: str,
     batch_size: int = 64,
