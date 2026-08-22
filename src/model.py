@@ -120,7 +120,7 @@ class SimpleCNN(nn.Module):
 
 
 def get_model(
-    architecture: str = "cifar_cnn",
+    architecture: str = "simple_cnn",
     num_classes: int = 10,
     **kwargs
 ) -> nn.Module:
@@ -128,7 +128,7 @@ def get_model(
     arch = str(architecture).lower().replace("-", "_")
     
         
-    if arch=="simple_cnn":
+    if arch == "simple_cnn":
         return SimpleCNN(num_classes=num_classes, **kwargs)
         
     elif arch == "resnet18":
@@ -140,5 +140,5 @@ def get_model(
     else:
         raise ValueError(
             f"Unsupported architecture: '{architecture}'. "
-            f"Supported options: ['cifar_cnn', 'simple_cnn', 'resnet18', 'resnet34']"
+            f"Supported options: ['simple_cnn', 'resnet18', 'resnet34']"
         )
