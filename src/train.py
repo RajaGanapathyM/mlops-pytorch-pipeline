@@ -1,9 +1,13 @@
 import json
+import os
 import sys
 from pathlib import Path
 import torch
 import torch.nn as nn
 import yaml
+
+sys.path.insert(0, str(Path(__file__).parent))
+
 from dataset import get_dataloaders
 from model import get_model
 
@@ -64,11 +68,8 @@ def evaluate(
     return avg_loss, accuracy
 
 def main():
-    config_path = Path("/app/configs/training_config.yaml")
-    if not config_path.exists():
-        config_path = Path("configs/training_config.yaml")
-    
-    config = load_config(str(config_path))
+    config_path = "configs/training_config.yaml"
+    config = load_config(config_path)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     model = get_model(

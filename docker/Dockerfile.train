@@ -1,0 +1,31 @@
+# Stage 1: Base builder with dependencies
+FROM python:3.11-slim AS builder
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+COPY requirements/train.txt .
+RUN pip install --no-cache-dir -r train.txt
+
+# Stage 2: Training runtime
+FROM python:3.11-slim AS training
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Copy installed dependencies from builder
+COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Copy application source code and configurations
+COPY src/ ./src/
+COPY configs/ ./configs/
+
+# Create data and checkpoint directories for volume mounts
+RUN mkdir -p /app/data /app/checkpoints
+
+ENTRYPOINT ["python", "src/train.py"]
