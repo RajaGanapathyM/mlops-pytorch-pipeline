@@ -1,0 +1,38 @@
+G:\MLOps Ass3\mlops-pytorch-pipeline>docker build -f docker/Dockerfile.train -t mlops-train:v1 .
+[+] Building 1113.5s (15/15) FINISHED                                                              docker:desktop-linux
+ => [internal] load build definition from Dockerfile.train                                                         0.1s
+ => => transferring dockerfile: 824B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                2.9s
+ => [auth] library/python:pull token for registry-1.docker.io                                                      0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [builder 1/4] FROM docker.io/library/python:3.11-slim@sha256:be1575ed968de893bd54f4c56315ff7c4736ce522c1bca0  12.8s
+ => => resolve docker.io/library/python:3.11-slim@sha256:be1575ed968de893bd54f4c56315ff7c4736ce522c1bca08fd521731  0.0s
+ => => sha256:a14578096edaf2dfd831b7865bfcc6d174e32bdeec920d1a66e11cab6269d7fa 250B / 250B                         0.3s
+ => => sha256:c86306e32cd038ae40a4d1b8258a046618be19d6ef5280bb62a89960fecbf796 14.45MB / 14.45MB                   2.8s
+ => => sha256:87e1b7cce0233772f3a18c08fa0e287c519b474afbfcd87ed023faad834cadb9 1.29MB / 1.29MB                     1.3s
+ => => sha256:6310eb16bf4251731feab01e8f633bf5e2d75a657ccad97f420b1f83cce457be 29.79MB / 29.79MB                   4.6s
+ => => extracting sha256:6310eb16bf4251731feab01e8f633bf5e2d75a657ccad97f420b1f83cce457be                          1.4s
+ => => extracting sha256:87e1b7cce0233772f3a18c08fa0e287c519b474afbfcd87ed023faad834cadb9                          2.1s
+ => => extracting sha256:c86306e32cd038ae40a4d1b8258a046618be19d6ef5280bb62a89960fecbf796                          2.5s
+ => => extracting sha256:a14578096edaf2dfd831b7865bfcc6d174e32bdeec920d1a66e11cab6269d7fa                          1.8s
+ => [internal] load build context                                                                                  0.1s
+ => => transferring context: 45.92kB                                                                               0.0s
+ => [builder 2/4] WORKDIR /app                                                                                     2.4s
+ => [builder 3/4] COPY requirements/train.txt .                                                                    0.1s
+ => [builder 4/4] RUN pip install --no-cache-dir -r train.txt                                                    600.5s
+ => [training 3/7] COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-p  107.9s
+ => [training 4/7] COPY --from=builder /usr/local/bin /usr/local/bin                                               2.1s
+ => [training 5/7] COPY src/ ./src/                                                                                1.4s
+ => [training 6/7] COPY configs/ ./configs/                                                                        1.2s
+ => [training 7/7] RUN mkdir -p /app/data /app/checkpoints                                                         0.7s
+ => exporting to image                                                                                           334.7s
+ => => exporting layers                                                                                          240.8s
+ => => exporting manifest sha256:808c92d7c0e4d3a4d7ade3b7794d819c70deca0c50e8b1f083ffe877c309e434                  0.0s
+ => => exporting config sha256:77096b3f1c1af9e944a6da5a05d0c9e8a33bf81d32e9af35782b8395a382347e                    0.0s
+ => => exporting attestation manifest sha256:7b063450d1819fd1d284ab469e13d5f9a5dfe0a39c7c44d4d798b5afd970748c      0.1s
+ => => exporting manifest list sha256:aeb34138b00c3486011a8d57b48f704851b6c906429e8797336394b99094cd0f             0.0s
+ => => naming to docker.io/library/mlops-train:v1                                                                  0.1s
+ => => unpacking to docker.io/library/mlops-train:v1                                                              93.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/klkalzra96j6wrn0k607fr59n
