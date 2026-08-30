@@ -7,7 +7,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 COPY requirements/serve.txt .
-RUN pip install --no-cache-dir -r serve.txt
+RUN pip install -r serve.txt
+COPY requirements/serve2.txt .
+RUN pip install -r serve2.txt
 
 # Stage 2: Serving runtime
 FROM python:3.11-slim AS serve

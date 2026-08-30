@@ -1,38 +1,162 @@
-G:\MLOps Ass3\mlops-pytorch-pipeline>docker build -f docker/Dockerfile.train -t mlops-train:v1 .
-[+] Building 1113.5s (15/15) FINISHED                                                              docker:desktop-linux
- => [internal] load build definition from Dockerfile.train                                                         0.1s
- => => transferring dockerfile: 824B                                                                               0.0s
- => [internal] load metadata for docker.io/library/python:3.11-slim                                                2.9s
- => [auth] library/python:pull token for registry-1.docker.io                                                      0.0s
- => [internal] load .dockerignore                                                                                  0.0s
- => => transferring context: 2B                                                                                    0.0s
- => [builder 1/4] FROM docker.io/library/python:3.11-slim@sha256:be1575ed968de893bd54f4c56315ff7c4736ce522c1bca0  12.8s
- => => resolve docker.io/library/python:3.11-slim@sha256:be1575ed968de893bd54f4c56315ff7c4736ce522c1bca08fd521731  0.0s
- => => sha256:a14578096edaf2dfd831b7865bfcc6d174e32bdeec920d1a66e11cab6269d7fa 250B / 250B                         0.3s
- => => sha256:c86306e32cd038ae40a4d1b8258a046618be19d6ef5280bb62a89960fecbf796 14.45MB / 14.45MB                   2.8s
- => => sha256:87e1b7cce0233772f3a18c08fa0e287c519b474afbfcd87ed023faad834cadb9 1.29MB / 1.29MB                     1.3s
- => => sha256:6310eb16bf4251731feab01e8f633bf5e2d75a657ccad97f420b1f83cce457be 29.79MB / 29.79MB                   4.6s
- => => extracting sha256:6310eb16bf4251731feab01e8f633bf5e2d75a657ccad97f420b1f83cce457be                          1.4s
- => => extracting sha256:87e1b7cce0233772f3a18c08fa0e287c519b474afbfcd87ed023faad834cadb9                          2.1s
- => => extracting sha256:c86306e32cd038ae40a4d1b8258a046618be19d6ef5280bb62a89960fecbf796                          2.5s
- => => extracting sha256:a14578096edaf2dfd831b7865bfcc6d174e32bdeec920d1a66e11cab6269d7fa                          1.8s
- => [internal] load build context                                                                                  0.1s
- => => transferring context: 45.92kB                                                                               0.0s
- => [builder 2/4] WORKDIR /app                                                                                     2.4s
- => [builder 3/4] COPY requirements/train.txt .                                                                    0.1s
- => [builder 4/4] RUN pip install --no-cache-dir -r train.txt                                                    600.5s
- => [training 3/7] COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-p  107.9s
- => [training 4/7] COPY --from=builder /usr/local/bin /usr/local/bin                                               2.1s
- => [training 5/7] COPY src/ ./src/                                                                                1.4s
- => [training 6/7] COPY configs/ ./configs/                                                                        1.2s
- => [training 7/7] RUN mkdir -p /app/data /app/checkpoints                                                         0.7s
- => exporting to image                                                                                           334.7s
- => => exporting layers                                                                                          240.8s
- => => exporting manifest sha256:808c92d7c0e4d3a4d7ade3b7794d819c70deca0c50e8b1f083ffe877c309e434                  0.0s
- => => exporting config sha256:77096b3f1c1af9e944a6da5a05d0c9e8a33bf81d32e9af35782b8395a382347e                    0.0s
- => => exporting attestation manifest sha256:7b063450d1819fd1d284ab469e13d5f9a5dfe0a39c7c44d4d798b5afd970748c      0.1s
- => => exporting manifest list sha256:aeb34138b00c3486011a8d57b48f704851b6c906429e8797336394b99094cd0f             0.0s
- => => naming to docker.io/library/mlops-train:v1                                                                  0.1s
- => => unpacking to docker.io/library/mlops-train:v1                                                              93.2s
+C:\Users\rg\OneDrive\Documents\GitHub\mlops-pytorch-pipeline>docker build -f docker/Dockerfile.train -t mlops-train:v1 .
+[+] Building 2460.6s (15/15) FINISHED                                                                                    docker:desktop-linux
+ => [internal] load build definition from Dockerfile.train                                                                               0.0s
+ => => transferring dockerfile: 855B                                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                                      1.4s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                            0.0s
+ => [internal] load .dockerignore                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                          0.0s
+ => [builder 1/4] FROM docker.io/library/python:3.11-slim@sha256:1042b61448fef4ba92d16a8c7eb4996d027568ce64792a7877fd88511e0af7c6        0.0s
+ => => resolve docker.io/library/python:3.11-slim@sha256:1042b61448fef4ba92d16a8c7eb4996d027568ce64792a7877fd88511e0af7c6                0.0s
+ => [internal] load build context                                                                                                        0.0s
+ => => transferring context: 303B                                                                                                        0.0s
+ => CACHED [builder 2/4] WORKDIR /app                                                                                                    0.0s
+ => CACHED [builder 3/4] COPY requirements/train.txt .                                                                                   0.0s
+ => [builder 4/4] RUN pip install --no-cache-dir -r train.txt                                                                         2239.3s
+ => [training 3/7] COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages                  14.3s
+ => [training 4/7] COPY --from=builder /usr/local/bin /usr/local/bin                                                                     0.3s
+ => [training 5/7] COPY src/ ./src/                                                                                                      0.0s
+ => [training 6/7] COPY configs/ ./configs/                                                                                              0.0s
+ => [training 7/7] RUN mkdir -p /app/data /app/checkpoints                                                                               0.5s
+ => exporting to image                                                                                                                 193.4s
+ => => exporting layers                                                                                                                152.8s
+ => => exporting manifest sha256:4933db9a0f9141be194674fb11f162489842bc7b2d8735a5db2eb8ee3598e3e1                                        0.0s
+ => => exporting config sha256:aec433f89e3d13461cb4b1804fc47778e7ae88b028f60803232626a9d145cc3d                                          0.0s
+ => => exporting attestation manifest sha256:93751e6fd3720fb82a0f4cba1675397eed26f63f6cfaab227d7382af170dde79                            0.0s
+ => => exporting manifest list sha256:10fc2a4c6d5c99833b86693f9fb6742658c6f51f626966055b88ec60af6e80b6                                   0.0s
+ => => naming to docker.io/library/mlops-train:v1                                                                                        0.0s
+ => => unpacking to docker.io/library/mlops-train:v1                                                                                    40.3s
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/klkalzra96j6wrn0k607fr59n
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/7iqy8cxw8oyh0u0omsyvfj82v
+
+C:\Users\rg\OneDrive\Documents\GitHub\mlops-pytorch-pipeline>
+
+---------------------------------------------------
+PS C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline> docker run --rm -v "$(pwd)/data:/app/data" -v "$(pwd)/checkpoints:/app/checkpoints" mlops-train:v1
+Downloading https://cave.cs.toronto.edu/kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+100.0%
+Extracting ./data/cifar-10-python.tar.gz to ./data
+Files already downloaded and verified
+{"epoch": 1, "train_loss": 1.4324, "train_accuracy": 0.4762, "val_loss": 1.1433, "val_accuracy": 0.5881}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 2, "train_loss": 1.1017, "train_accuracy": 0.605, "val_loss": 0.8551, "val_accuracy": 0.6948}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 3, "train_loss": 0.9817, "train_accuracy": 0.6487, "val_loss": 0.8423, "val_accuracy": 0.7069}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 4, "train_loss": 0.9106, "train_accuracy": 0.6783, "val_loss": 0.819, "val_accuracy": 0.7136}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 5, "train_loss": 0.8506, "train_accuracy": 0.7004, "val_loss": 0.7611, "val_accuracy": 0.7309}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 6, "train_loss": 0.8083, "train_accuracy": 0.7186, "val_loss": 0.7233, "val_accuracy": 0.7442}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 7, "train_loss": 0.7738, "train_accuracy": 0.7298, "val_loss": 0.694, "val_accuracy": 0.7576}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 8, "train_loss": 0.7417, "train_accuracy": 0.7389, "val_loss": 0.6879, "val_accuracy": 0.761}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 9, "train_loss": 0.7095, "train_accuracy": 0.7521, "val_loss": 0.6281, "val_accuracy": 0.7836}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 10, "train_loss": 0.6815, "train_accuracy": 0.7628, "val_loss": 0.6349, "val_accuracy": 0.7813}
+{"epoch": 11, "train_loss": 0.663, "train_accuracy": 0.7687, "val_loss": 0.6622, "val_accuracy": 0.7743}
+{"epoch": 12, "train_loss": 0.6414, "train_accuracy": 0.7763, "val_loss": 0.5842, "val_accuracy": 0.7972}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 13, "train_loss": 0.6234, "train_accuracy": 0.7835, "val_loss": 0.5741, "val_accuracy": 0.8035}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 14, "train_loss": 0.6012, "train_accuracy": 0.792, "val_loss": 0.6052, "val_accuracy": 0.7916}
+{"epoch": 15, "train_loss": 0.5877, "train_accuracy": 0.7971, "val_loss": 0.5775, "val_accuracy": 0.8033}
+{"epoch": 16, "train_loss": 0.5759, "train_accuracy": 0.8013, "val_loss": 0.5395, "val_accuracy": 0.8141}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 17, "train_loss": 0.5584, "train_accuracy": 0.8051, "val_loss": 0.5893, "val_accuracy": 0.7971}
+{"epoch": 18, "train_loss": 0.5543, "train_accuracy": 0.806, "val_loss": 0.541, "val_accuracy": 0.8173}
+{"epoch": 19, "train_loss": 0.5401, "train_accuracy": 0.8146, "val_loss": 0.5336, "val_accuracy": 0.8184}
+{"event": "checkpoint_saved", "path": "checkpoints/best_model.pt"}
+{"epoch": 20, "train_loss": 0.5289, "train_accuracy": 0.8166, "val_loss": 0.5667, "val_accuracy": 0.8122}
+{"event": "training_complete", "best_val_loss": 0.5336}
+PS C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline> 
+------------------------------------------------------------------------------
+PS C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline> docker build -f docker/Dockerfile.serve -t mlops-serve:v1 .
+[+] Building 3515.5s (15/15) FINISHED                                                                                    docker:desktop-linux
+ => [internal] load build definition from Dockerfile.serve                                                                               0.0s
+ => => transferring dockerfile: 1.42kB                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                                      1.0s
+ => [internal] load .dockerignore                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                          0.0s
+ => [internal] load build context                                                                                                        0.0s
+ => => transferring context: 303B                                                                                                        0.0s
+ => [builder 1/4] FROM docker.io/library/python:3.11-slim@sha256:1042b61448fef4ba92d16a8c7eb4996d027568ce64792a7877fd88511e0af7c6        0.0s
+ => => resolve docker.io/library/python:3.11-slim@sha256:1042b61448fef4ba92d16a8c7eb4996d027568ce64792a7877fd88511e0af7c6                0.0s
+ => CACHED [builder 2/4] WORKDIR /app                                                                                                    0.0s
+ => CACHED [serve 3/8] RUN groupadd -g 1000 appgroup &&     useradd -u 1000 -g appgroup -s /bin/sh -m appuser                            0.0s
+ => CACHED [builder 3/4] COPY requirements/serve.txt .                                                                                   0.0s
+ => [builder 4/4] RUN pip install -r serve.txt                                                                                        3056.5s
+ => [serve 4/8] COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages                     28.2s 
+ => [serve 5/8] COPY --from=builder /usr/local/bin /usr/local/bin                                                                        0.5s 
+ => [serve 6/8] COPY src/ ./src/                                                                                                         0.1s 
+ => [serve 7/8] COPY configs/ ./configs/                                                                                                 0.1s 
+ => [serve 8/8] RUN mkdir -p /app/checkpoints &&     chown -R appuser:appgroup /app                                                      0.9s 
+ => exporting to image                                                                                                                 405.1s 
+ => => exporting layers                                                                                                                332.9s
+ => => exporting manifest sha256:809953d35818c71307a411bc3df8827c7aa80e4676b9a32b713bdb3616f56a17                                        0.1s
+ => => exporting config sha256:2731c08896bf94f19cb173660df47dea851071648bd11f22c6791ca962a8a0cb                                          0.0s
+ => => exporting attestation manifest sha256:09d57706275aa4624b07d7960edbd9807f04f402564875896510e116d236cc54                            0.0s
+ => => exporting manifest list sha256:18d8fa31f3386d42f3819387222d0afb3db9cf1407e52f6777eb0b411c9824f5                                   0.0s
+ => => naming to docker.io/library/mlops-serve:v1                                                                                        0.0s
+ => => unpacking to docker.io/library/mlops-serve:v1                                                                                    71.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/lqn4x5v5c5g857nnuc84l4ima
+PS C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline> 
+----------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+PS C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline> docker build -f docker/Dockerfile.serve -t mlops-serve:v1 .
+[+] Building 531.8s (17/17) FINISHED                                                                                     docker:desktop-linux
+ => [internal] load build definition from Dockerfile.serve                                                                               0.0s
+ => => transferring dockerfile: 1.48kB                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                                      1.4s
+ => [internal] load .dockerignore                                                                                                        0.0s
+ => => transferring context: 2B                                                                                                          0.0s
+ => [builder 1/6] FROM docker.io/library/python:3.11-slim@sha256:1042b61448fef4ba92d16a8c7eb4996d027568ce64792a7877fd88511e0af7c6        0.1s
+ => => resolve docker.io/library/python:3.11-slim@sha256:1042b61448fef4ba92d16a8c7eb4996d027568ce64792a7877fd88511e0af7c6                0.1s
+ => [internal] load build context                                                                                                        0.0s
+ => => transferring context: 373B                                                                                                        0.0s
+ => CACHED [builder 2/6] WORKDIR /app                                                                                                    0.0s
+ => CACHED [builder 3/6] COPY requirements/serve.txt .                                                                                   0.0s
+ => CACHED [builder 4/6] RUN pip install -r serve.txt                                                                                    0.0s
+ => [builder 5/6] COPY requirements/serve2.txt .                                                                                         0.0s
+ => [builder 6/6] RUN pip install -r serve2.txt                                                                                          4.9s
+ => CACHED [serve 3/8] RUN groupadd -g 1000 appgroup &&     useradd -u 1000 -g appgroup -s /bin/sh -m appuser                            0.0s 
+ => [serve 4/8] COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages                     68.7s 
+ => [serve 5/8] COPY --from=builder /usr/local/bin /usr/local/bin                                                                        1.2s 
+ => [serve 6/8] COPY src/ ./src/                                                                                                         0.1s 
+ => [serve 7/8] COPY configs/ ./configs/                                                                                                 0.1s 
+ => [serve 8/8] RUN mkdir -p /app/checkpoints &&     chown -R appuser:appgroup /app                                                      1.6s 
+ => exporting to image                                                                                                                 419.9s
+ => => exporting layers                                                                                                                347.4s
+ => => exporting manifest sha256:063e0f8aa3ae19755be4d671592e38cca47790f8d6dccff419433ba45f71b617                                        0.1s
+ => => exporting config sha256:8a35b20544fbb04c5b772cf095c6f80d3874f648ff7da89b12c2af092aa80daf                                          0.0s
+ => => exporting attestation manifest sha256:b64f879819194876f2594d6c0c3dab9154066bfa29020675eb057aa38be2821b                            0.0s
+ => => exporting manifest list sha256:289461c5b50c3952d8587c932f5d84d22dc1d29bb12a758b832d4a17506e96b1                                   0.0s
+ => => naming to docker.io/library/mlops-serve:v1                                                                                        0.0s
+ => => unpacking to docker.io/library/mlops-serve:v1                                                                                    72.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/eglq78ha2a45lao50u5wonwuz
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+PS C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline> docker run --rm -p 8080:8080 -v "$(pwd)/checkpoints:/app/checkpoints" mlops-serve:v1
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+Successfully loaded checkpoint from: checkpoints/best_model.pt
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59526 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56728 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40554 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57944 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36556 - "GET /health HTTP/1.1" 200 OK
+INFO:     172.17.0.1:60168 - "POST /predict HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60264 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38316 - "GET /health HTTP/1.1" 200 OK
+
+---------------------------------------------------------------------------------------------------------------------
+C:\Users\rg\OneDrive\Documents\GitHub\mlops_pytorch_pipeline>curl -X POST http://localhost:8080/predict -F "image=@test_image.png"
+{"predicted_class":"airplane","predicted_index":0,"confidence":0.99992,"probabilities":{"airplane":0.99992,"automobile":0.0,"bird":5.4e-05,"cat":5e-06,"deer":4e-06,"dog":0.0,"frog":0.0,"horse":0.0,"ship":3e-06,"truck":1.4e-05}}
+--------------------------------------------------------------------------------------------------------------------------
