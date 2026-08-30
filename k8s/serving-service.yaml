@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-serving-service
+  namespace: ml-training
+  labels:
+    app: ml-serving
+    project: mlops-pytorch-pipeline
+spec:
+  type: ClusterIP
+  selector:
+    app: ml-serving
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
